@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+    <link rel="icon" type="image/png" href="/favicon.ico">
+	<!-- <link rel="stylesheet" type="text/css" href="./assets/libs/toastify.min.css"> -->
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			box-sizing: border-box;
+
+			border-top: 2px solid;
+			border-image-source: linear-gradient(90deg, #0d6efd, #8ed6fb 50%, #d32e9d);
+			border-image-slice: 1;
+			-webkit-border-top: 2px solid;
+			-webkit-border-image-source: linear-gradient(90deg, #0d6efd, #8ed6fb 50%, #d32e9d);
+			-webkit-border-image-slice: 1;
+
+			padding: 24px 0;
+		}
+
+		#emojis {
+			display: flex;
+			flex-wrap: wrap;
+		}
+
+		.clip {
+			text-align: center;
+			width: 20px;
+			height: 20px;
+			line-height: 20px;
+			flex-shrink: 0;
+			border: 1px solid #eee;
+			margin: 2px;
+			font-size: 12px;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div id="emojis">
+		<!-- 
+		<div data-clipboard-text="😀" class="clip">😀</div>
+		<div data-clipboard-text="😄" class="clip">😄</div>
+		<div data-clipboard-text="😁" class="clip">😁</div>
+		<div data-clipboard-text="🙃" class="clip">🙃</div>
+		 -->
+	</div>
+
+	<!-- <script src="./assets/libs/clipboard.min.js"></script> -->
+	<!-- <script type="text/javascript" src="./assets/libs/toastify-js.js"></script> -->
+	<script src="https://cdn.jsdelivr.net/npm/clipboard"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+	<!-- <script type="module" src="./assets/main.js"></script> -->
+	<script>
+		var cont = document.querySelector('#emojis')
+
+		var emojis = '😀😁😂😃😄😅😆😉😊😋😎😍😘😗😙😚☺😇😐😑' +
+			'👕👖👗👘👙👚👛👜👝🎒💼👞👟👠👡👢👑👒🎩🎓💄💅💍🌂'
+
+		var emojistr = ''
+		for (var i of emojis) {
+			// console.log(i)
+			emojistr += `<div data-clipboard-text="${i}" class="clip">${i}</div>`
+		}
+
+		cont.innerHTML = emojistr
+
+		var clipboard = new ClipboardJS('.clip');
+
+		clipboard.on('success', function (e) {
+			// console.info('Action:', e.action);
+			console.info('Text:', e.text);
+			// console.info('Trigger:', e.trigger);
+
+			Toastify({
+				text: '! Copied ' + e.text,
+				duration: 1000,
+				gravity: 'bottom',
+				position: 'center',
+				style: {
+					background: "linear-gradient(to right, #00b09b, #96c93d)",
+					// background: "linear-gradient(90deg, #0d6efd, #8ed6fb 50%, #d32e9d)",
+					"font-family": "Segoe Script",
+					"font-size": "12px",
+					"box-sizing": "border-box",
+					width: "100px",
+					height: "32px",
+					"line-height": "32px",
+					padding: "0 8px",
+				},
+			}).showToast();
+
+			e.clearSelection();
+		});
+
+		clipboard.on('error', function (e) {
+			console.error('Action:', e.action);
+			console.error('Trigger:', e.trigger);
+		});
+	</script>
+</body>
+
+</html>
