@@ -1,4 +1,7 @@
-let en = false;
+import CONFIG from './config.js';
+
+let en = CONFIG.en;
+
 const CONTAINER = document.querySelector('#emojis');
 const ANCHORS = document.querySelector('#anchors');
 
