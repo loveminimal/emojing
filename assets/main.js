@@ -44,22 +44,22 @@ const ANCHORS = document.querySelector('#anchors');
 // 可以注释掉，不欲显示的块
 const EMOJIS_ARR = [
 	smileys,
-	gestures_and_body_parts,
-	people_and_fantasy,
+	objects,
+	animals_nature,
+	food_drink,
+	travel_places,
+	symbols,
+	unicode_symbols,
+	flags,
 	clothing_and_accessories,
+	gestures_and_body_parts,
+	activity_and_sports,
+	people_and_fantasy,
 	pale,
 	cream_white,
 	brown,
 	dark_brown,
 	black,
-	animals_nature,
-	food_drink,
-	activity_and_sports,
-	travel_places,
-	objects,
-	symbols,
-	unicode_symbols,
-	flags
 ]
 
 // 渲染‘右侧导航’
