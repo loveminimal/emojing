@@ -1,5 +1,6 @@
 import CONFIG from './config.js';
 import {
+	inbox,
 	smileys,
 	gestures_and_body_parts,
 	people_and_fantasy,
@@ -16,33 +17,16 @@ import {
 	objects,
 	symbols,
 	unicode_symbols,
-	flags
+	flags,
+	dao
 } from './data.js';
 
 let en = CONFIG.en;
 
-// 开个玩笑，不要介意 😝
-const JOKER = document.querySelector('#joker');
-JOKER.onclick = function() {
-	Toastify({
-		text: en ? '🤪 Duped! None dark mode!' : '🤪 你上当了，没有暗色模式！',
-		duration: 1000,
-		position: 'right',
-		stopOnFocus: false,
-		style: {
-			background: "linear-gradient(to right, #ffd460, #f07b3f)",
-			"font-family": "'Segoe Script', kaiti", 
-			"font-size": ".16rem",
-		},
-	}).showToast();
-}
-
-const CONTAINER = document.querySelector('#emojis');
-const ANCHORS = document.querySelector('#anchors');
-
 // 启用的 Emoji 符号
 // 可以注释掉，不欲显示的块
 const EMOJIS_ARR = [
+	inbox,
 	smileys,
 	objects,
 	animals_nature,
@@ -50,17 +34,21 @@ const EMOJIS_ARR = [
 	travel_places,
 	symbols,
 	unicode_symbols,
+	dao,
 	flags,
 	clothing_and_accessories,
 	gestures_and_body_parts,
 	activity_and_sports,
 	people_and_fantasy,
 	pale,
-	cream_white,
-	brown,
-	dark_brown,
-	black,
+	// cream_white,
+	// brown,
+	// dark_brown,
+	// black,
 ]
+
+const CONTAINER = document.querySelector('#emojis');
+const ANCHORS = document.querySelector('#anchors');
 
 // 渲染‘右侧导航’
 renderAnchors(ANCHORS, EMOJIS_ARR);
@@ -68,7 +56,7 @@ renderAnchors(ANCHORS, EMOJIS_ARR);
 // 渲染 Emoji 符号
 let emojistr = '';
 EMOJIS_ARR.map(item => {
-	emojistr += genEmojistr(item);
+	if(item.value) emojistr += genEmojistr(item);
 })
 
 renderEmojistr(CONTAINER, emojistr);
@@ -103,7 +91,7 @@ function renderAnchors(anchors, emojisArr) {
 	let _str = '';
 
 	emojisArr.map(item => {
-		_str += `<a href="#${item.id}">${en ? item.title : item.title_zh}</a>`;
+		if(item.value) _str += `<a href="#${item.id}">${en ? item.title : item.title_zh}</a>`;
 	})
 
 	anchors.innerHTML = _str;
@@ -123,4 +111,20 @@ function genEmojistr(emojis) {
 	})
 
 	return `<div id="${emojis.id}" class="title">${en ? emojis.title : emojis.title_zh}</div>` + _emojistr;
+}
+
+// 开个玩笑，不要介意 😝
+const JOKER = document.querySelector('#joker');
+JOKER.onclick = function() {
+	Toastify({
+		text: en ? '🤪 Duped! None dark mode!' : '🤪 你上当了，没有暗色模式！',
+		duration: 1000,
+		position: 'right',
+		stopOnFocus: false,
+		style: {
+			background: "linear-gradient(to right, #ffd460, #f07b3f)",
+			"font-family": "'Segoe Script', kaiti", 
+			"font-size": ".16rem",
+		},
+	}).showToast();
 }
