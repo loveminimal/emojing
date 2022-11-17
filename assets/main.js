@@ -21,9 +21,27 @@ import {
 
 let en = CONFIG.en;
 
+// 开个玩笑，不要介意 😝
+const JOKER = document.querySelector('#joker');
+JOKER.onclick = function() {
+	Toastify({
+		text: en ? '🤪 Duped! None dark mode!' : '🤪 你上当了，没有暗色模式！',
+		duration: 1000,
+		position: 'right',
+		stopOnFocus: false,
+		style: {
+			background: "linear-gradient(to right, #ffd460, #f07b3f)",
+			"font-family": "'Segoe Script', kaiti", 
+			"font-size": ".16rem",
+		},
+	}).showToast();
+}
+
 const CONTAINER = document.querySelector('#emojis');
 const ANCHORS = document.querySelector('#anchors');
 
+// 启用的 Emoji 符号
+// 可以注释掉，不欲显示的块
 const EMOJIS_ARR = [
 	smileys,
 	gestures_and_body_parts,
@@ -44,8 +62,10 @@ const EMOJIS_ARR = [
 	flags
 ]
 
+// 渲染‘右侧导航’
 renderAnchors(ANCHORS, EMOJIS_ARR);
 
+// 渲染 Emoji 符号
 let emojistr = '';
 EMOJIS_ARR.map(item => {
 	emojistr += genEmojistr(item);
@@ -53,7 +73,7 @@ EMOJIS_ARR.map(item => {
 
 renderEmojistr(CONTAINER, emojistr);
 
-
+// 剪切板、弹窗
 let clipboard = new ClipboardJS('.clip');
 clipboard.on('success', function (e) {
 	console.info('Text:', e.text);
