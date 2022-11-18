@@ -118,7 +118,7 @@ const JOKER = document.querySelector('#joker');
 JOKER.onclick = function() {
 	Toastify({
 		text: en ? '🤪 Duped! None dark mode!' : '🤪 你上当了，没有暗色模式！',
-		duration: 1000,
+		duration: 2000,
 		position: 'right',
 		stopOnFocus: false,
 		style: {

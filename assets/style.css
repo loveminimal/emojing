@@ -4,9 +4,6 @@ html {
 	font-size: 100px;
 	height: 100%;
 	scroll-behavior: smooth;
-
-	font-family: 'Segoe Print', 'Segoe Script', 'Courier New', kaiti;
-
 }
 
 body {
@@ -42,13 +39,19 @@ body {
 #anchors {
 	padding: 0 16px;
 	position: fixed;
-	top: 16%;
+	top: 18%;
 	/* top: 8%; */
 	right: 0;
 	width: 160px;
 	border-left: 1px solid #eee;
-	height: 600px;
+	max-height: 600px;
+	overflow: auto;
+	font-family: 'Segoe Print', 'Segoe Script', 'Courier New', kaiti;
+}
 
+#anchors::-webkit-scrollbar {
+	width: 1px;
+	height: 1px;
 }
 
 #anchors a {
@@ -80,6 +83,8 @@ body {
 	margin: 16px;
 	color: #999;
 	padding-top: 24px;
+
+	font-family: 'Segoe Print', 'Segoe Script', 'Courier New', kaiti;
 }
 
 #emojis .clip {
