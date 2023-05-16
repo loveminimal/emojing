@@ -1,8 +1,8 @@
-一个简单的 Emoji 符号复制页 🎉 -- [Emojing](https://ovirgo.com/emojing)
+一个简单的 Emoji 符号复制页 🎉 -- [Emojing](https://loveminimal.github.io/emojing/)
 
 ## 用法
 
-它本身就是一个工具页，你可以很方便地使用它 [Emojing](https://ovirgo.com/emojing) 。
+它本身就是一个工具页，你可以很方便地使用它 [Emojing](https://loveminimal.github.io/emojing/) 。
 
 配置 `config.js` ：
 
